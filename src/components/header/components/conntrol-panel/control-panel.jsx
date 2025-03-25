@@ -10,7 +10,7 @@ const ControlPanelContainer = ({ className }) => {
 				<Link to="./login">Войти</Link>
 			</div>
 			<div>
-				<button onClick={navigate(-1)}>Назад</button>
+				<button onClick={() => navigate(-1)}>Назад</button>
 				<Link to="./post">post</Link>
 				<Link to="./users">users</Link>
 			</div>
