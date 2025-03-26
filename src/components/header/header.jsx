@@ -22,4 +22,9 @@ export const Header = styled(HeaderContainer)`
 	box-shadow: 0 -2px 16px #000;
 	border-radius: 0 0 10px 10px;
 	background-color: #fff;
+	& > div {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 `;

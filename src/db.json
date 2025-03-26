@@ -1,9 +1,9 @@
 {
 	"users": [
 		{
-			"id": "s",
+			"id": 1,
 			"login": "login",
-			"password": "123",
+			"password": "123qwe",
 			"registredAt": "1",
 			"roleId": "1"
 		}
