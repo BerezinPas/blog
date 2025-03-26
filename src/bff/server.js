@@ -1,3 +1,4 @@
+import { ROLE } from '../constants';
 import { createUser } from './create-user';
 import { getUser } from './get-user';
 import { sessions } from './sessions';
@@ -35,7 +36,7 @@ export const server = {
 		};
 	},
 	async register(regLogin, regPassword) {
-		const user = await getUser(regLogin);
+		let user = await getUser(regLogin);
 
 		if (user) {
 			return {
@@ -44,14 +45,16 @@ export const server = {
 			};
 		}
 
-		await createUser(regLogin, regPassword);
+		const id = await createUser(regLogin, regPassword);
+
+		console.log('register', id);
 
 		return {
 			error: null,
 			res: {
-				id: user.id,
-				login: user.login,
-				roleId: user.roleId,
+				id: id,
+				login: regLogin,
+				roleId: ROLE.READER,
 				session: sessions.create(),
 			},
 		};

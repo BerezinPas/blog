@@ -1,21 +1,26 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
-import { server } from '../../bff';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { AuthErrorForm, Button, H2, Input } from '../../components';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import * as yup from 'yup';
+import { server } from '../../bff';
 import { setUser } from '../../actions';
-import { loginSchema, passwordSchema } from '../../schemes';
+import { useState } from 'react';
+import {
+	loginSchema,
+	passwordCheckSchema,
+	passwordSchema,
+} from '../../schemes';
 
-const authFormSchema = yup.object().shape({
+const registerFormSchema = yup.object().shape({
 	login: loginSchema,
 	password: passwordSchema,
+	passwordCheck: passwordCheckSchema,
 });
 
-const AuthorizationContainer = ({ className }) => {
+const RegisterContainer = ({ className }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -27,14 +32,15 @@ const AuthorizationContainer = ({ className }) => {
 		defaultValues: {
 			login: '',
 			password: '',
+			passwordCheck: '',
 		},
-		resolver: yupResolver(authFormSchema),
+		resolver: yupResolver(registerFormSchema),
 	});
 
 	const [serverError, setServerError] = useState(null);
 
 	const onSubmit = ({ login, password }) => {
-		server.authorize(login, password).then(({ error, res }) => {
+		server.register(login, password).then(({ error, res }) => {
 			if (error) {
 				setServerError(`Ошибка запроса: ${error}`);
 				return;
@@ -45,7 +51,11 @@ const AuthorizationContainer = ({ className }) => {
 		});
 	};
 
-	const formError = errors?.login?.message || errors?.password?.message;
+	const formError =
+		errors?.login?.message ||
+		errors?.password?.message ||
+		errors?.passwordCheck?.message;
+
 	const errorMessage = formError || serverError;
 
 	return (
@@ -66,17 +76,24 @@ const AuthorizationContainer = ({ className }) => {
 						onChange: () => setServerError(null),
 					})}
 				/>
+				<Input
+					type="password"
+					placeholder="repeat password"
+					{...register('passwordCheck', {
+						onChange: () => setServerError(null),
+					})}
+				/>
 				<Button type="submit" disabled={!!formError}>
-					Авторизоваться
+					Зарегистрироваться
 				</Button>
 				{errorMessage && <AuthErrorForm>{errorMessage}</AuthErrorForm>}
-				<Link to="/register">Регистрация</Link>
+				<Link to="/login">Авторизация</Link>
 			</form>
 		</div>
 	);
 };
 
-export const Authorization = styled(AuthorizationContainer)`
+export const Register = styled(RegisterContainer)`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
