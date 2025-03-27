@@ -1,4 +1,4 @@
-const usersInitialState = {};
+const usersInitialState = [];
 
 export const usersReducer = (state = usersInitialState, { type, payload }) => {
 	switch (type) {

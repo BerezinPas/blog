@@ -1,18 +1,16 @@
-import { URL } from '../constants';
+import { ROLE, URL } from '../../constants';
 
 const fetchURL = `${URL}/users`;
 
 export const createUser = (login, password) => {
-	console.log(login);
-
 	return fetch(fetchURL, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json;charset=utf-8' },
 		body: JSON.stringify({
-			login: login,
+			login,
 			password,
 			registed_at: new Date().toISOString().substring(0, 16).replace('T', ' '),
-			roleId: 2,
+			role_id: ROLE.READER,
 		}),
 	}).then((user) => user.json());
 };

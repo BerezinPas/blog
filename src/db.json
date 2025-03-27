@@ -1,32 +1,18 @@
 {
   "users": [
     {
-      "id": 1,
-      "login": "login",
-      "password": "123qwe",
-      "registredAt": "1",
-      "roleId": "1"
-    },
-    {
-      "login": "qweqwe",
+      "login": "admin",
       "password": "qweqwe",
-      "registed_at": "2025-03-26 07:51",
-      "roleId": 2,
+      "registred_at": "2025-03-26 07:51",
+      "role_id": 0,
       "id": 2
     },
     {
       "login": "qweqwew",
       "password": "qweqwe",
-      "registed_at": "2025-03-26 07:52",
-      "roleId": 2,
-      "id": 3
-    },
-    {
-      "login": "loginw",
-      "password": "qweqwe",
-      "registed_at": "2025-03-26 08:05",
-      "roleId": 2,
-      "id": 4
+      "registred_at": "2025-03-26 07:52",
+      "role_id": 1,
+      "id": 31
     }
   ],
   "roles": [
