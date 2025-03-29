@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { Icon } from '../../../../components';
 import { ROLE } from '../../../../constants';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectPostId } from '../../../../selectors';
+import { CLOSE_MODAL, openModal, removePostAsync } from '../../../../actions';
+import { useServerRequest } from '../../../../hooks/use-server-request';
+import { useNavigate } from 'react-router-dom';
 
 export const SpecialPanelContainer = ({
 	className,
@@ -8,6 +13,26 @@ export const SpecialPanelContainer = ({
 	roleId,
 	editButton,
 }) => {
+	const postId = useSelector(selectPostId);
+	const dispatch = useDispatch();
+	const requestServer = useServerRequest();
+	const navigate = useNavigate();
+
+	const onPostRemove = (id) => {
+		dispatch(
+			openModal({
+				text: 'Удалить Статью?',
+				onConfirm: () => {
+					dispatch(removePostAsync(requestServer, id)).then(() =>
+						navigate('/'),
+					);
+					dispatch(CLOSE_MODAL);
+				},
+				onCancel: () => dispatch(CLOSE_MODAL),
+			}),
+		);
+	};
+
 	return (
 		<div className={className}>
 			<div className="published-at">
@@ -19,7 +44,14 @@ export const SpecialPanelContainer = ({
 				{roleId === ROLE.ADMIN && (
 					<>
 						{editButton}
-						<Icon id=" fa-trash-o" margin="0 0px 0 0 " size="28px" />
+						<Icon
+							id=" fa-trash-o"
+							margin="0 0px 0 0 "
+							size="28px"
+							onClick={() => {
+								onPostRemove(postId);
+							}}
+						/>
 					</>
 				)}
 			</div>

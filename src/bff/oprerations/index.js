@@ -9,3 +9,4 @@ export * from './fetch-post';
 export * from './send-comment';
 export * from './delete-comment';
 export * from './updatePost';
+export * from './delete-post';

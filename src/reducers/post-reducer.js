@@ -29,6 +29,9 @@ export const postReducer = (state = postInitialState, { type, payload }) => {
 				comments: state.comments.filter((comment) => comment.id !== payload),
 			};
 
+		case ACTION_TYPE.RESET_POST_DATA:
+			return postInitialState;
+
 		default:
 			return state;
 	}
