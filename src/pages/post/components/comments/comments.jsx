@@ -15,7 +15,7 @@ const CommentsContainer = ({ className, comments }) => {
 	const userId = useSelector(selectUserId);
 	const params = useParams();
 	const onSubmit = (e) => {
-		console.log('e.target.value', newComment);
+		// console.log('e.target.value', newComment);
 		e.preventDefault();
 		dispatch(
 			sendCommentAsync(
@@ -49,6 +49,7 @@ const CommentsContainer = ({ className, comments }) => {
 				{comments.map(({ id, author, content, publishedAt }) => (
 					<Comment
 						key={id}
+						id={id}
 						author={author}
 						content={content}
 						publishedAt={publishedAt}

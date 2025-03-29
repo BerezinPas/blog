@@ -5,3 +5,7 @@ export * from './load-post-async';
 export * from './set-post-data';
 export * from './add-comment';
 export * from './send-comment-async';
+export * from './remove-comment';
+export * from './remove-comment-async';
+export * from './close-modal';
+export * from './open-modal';

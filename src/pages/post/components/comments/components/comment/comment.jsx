@@ -1,12 +1,33 @@
 import styled from 'styled-components';
 import { Icon } from '../../../../../../components';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUserId, selectUserRole } from '../../../../../../selectors';
 import { ROLE } from '../../../../../../constants';
+import { useServerRequest } from '../../../../../../hooks';
+import {
+	CLOSE_MODAL,
+	openModal,
+	removeCommentAsync,
+} from '../../../../../../actions';
 
 const CommentContainer = ({ className, id, author, content, publishedAt }) => {
 	const roleId = useSelector(selectUserRole);
+	const dispatch = useDispatch();
+	const requestServer = useServerRequest();
+
+	const onCommentRemove = (id) => {
+		dispatch(
+			openModal({
+				text: 'Удалить комментарий?',
+				onConfirm: () => {
+					dispatch(removeCommentAsync(requestServer, id));
+					dispatch(CLOSE_MODAL);
+				},
+				onCancel: () => dispatch(CLOSE_MODAL),
+			}),
+		);
+	};
 
 	return (
 		<div className={className}>
@@ -25,7 +46,12 @@ const CommentContainer = ({ className, id, author, content, publishedAt }) => {
 			</div>
 			<div className="delete-btn-wrapper">
 				{[ROLE.ADMIN, ROLE.MODERATOR].includes(roleId) && (
-					<Icon id="fa-trash-o" margin="8px 0px 0 7px " size="20px" />
+					<Icon
+						id="fa-trash-o"
+						margin="8px 0px 0 7px "
+						size="20px"
+						onClick={() => onCommentRemove(id)}
+					/>
 				)}
 			</div>
 		</div>

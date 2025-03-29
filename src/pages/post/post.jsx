@@ -14,11 +14,12 @@ const PostContainer = ({ className }) => {
 	const requestServer = useServerRequest();
 	const post = useSelector(selectPost);
 
-	console.log(post, 'post.jsx');
+	// console.log(post, 'post.jsx');
 
 	useEffect(() => {
 		dispatch(loadPostAsync(requestServer, params.id));
 	}, [dispatch, params.id, requestServer]);
+
 	return (
 		<div className={className}>
 			<Container>

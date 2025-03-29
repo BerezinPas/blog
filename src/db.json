@@ -74,44 +74,9 @@
     {
       "author_id": 2,
       "post_id": "0",
-      "content": "asd asdasd\n\n\n",
-      "published_at": "2025-03-28 08:21",
-      "id": 1
-    },
-    {
-      "author_id": 2,
-      "post_id": "0",
-      "content": "sdf dsf ds fd df d f\nd",
-      "published_at": "2025-03-28 08:22",
-      "id": 2
-    },
-    {
-      "author_id": 2,
-      "post_id": "0",
-      "content": "sdf w34f w",
-      "published_at": "2025-03-28 08:22",
-      "id": 3
-    },
-    {
-      "author_id": 2,
-      "post_id": "0",
-      "content": "Comment\n",
-      "published_at": "2025-03-28 08:22",
-      "id": 4
-    },
-    {
-      "author_id": 2,
-      "post_id": "0",
       "content": "asdsa dasd\nss\n\n\nsad",
       "published_at": "2025-03-28 08:22",
       "id": 5
-    },
-    {
-      "author_id": 2,
-      "post_id": "0",
-      "content": "sda ds ",
-      "published_at": "2025-03-28 10:11",
-      "id": 6
     },
     {
       "author_id": 2,
@@ -126,20 +91,6 @@
       "content": "d2 d2",
       "published_at": "2025-03-29 02:36",
       "id": 8
-    },
-    {
-      "author_id": 2,
-      "post_id": "0",
-      "content": "sa das das",
-      "published_at": "2025-03-29 02:36",
-      "id": 9
-    },
-    {
-      "author_id": 2,
-      "post_id": "0",
-      "content": "Нормальный комментарий\n",
-      "published_at": "2025-03-29 02:41",
-      "id": 10
     },
     {
       "author_id": 31,
