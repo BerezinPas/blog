@@ -1,7 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 import { Footer, Header } from './components';
-import { Authorization, Register, Users } from './pages';
+import { Authorization, Post, Register, Users } from './pages';
+import { useLayoutEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setUser } from './actions';
 
 const Appcolumn = styled.div`
 	display: flex;
@@ -17,37 +20,38 @@ const Page = styled.div`
 	padding: 120px 0;
 `;
 
-const H2 = styled.h2`
-	text-align: center;
-`;
-
 function Blog() {
+	const dispatch = useDispatch();
+
+	useLayoutEffect(() => {
+		const currentUserDataJSON = sessionStorage.getItem('userData');
+
+		if (!currentUserDataJSON) {
+			return;
+		}
+		const currentUserData = JSON.parse(currentUserDataJSON);
+		dispatch(
+			setUser({
+				...currentUserData,
+				id: Number(currentUserData.id),
+				roleId: Number(currentUserData.roleId),
+			}),
+		);
+	}, [dispatch]);
+
 	return (
 		<Appcolumn>
 			<Header />
 			<Page>
-				<H2>
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate
-					quae ipsa libero deserunt optio veniam, facere corrupti amet ducimus
-					culpa consectetur dolore eligendi eaque voluptatum error nam quaerat
-					animi repellendus modi placeat quibusdam tempora possimus architecto.
-					Suscipit soluta ea blanditiis labore accusamus, dolor doloremque quas
-					iste at aperiam alias necessitatibus cum, itaque, minus officia ex?
-					Debitis alias, quod ad qui non illo doloremque iste, sed ipsum cum
-					consequuntur pariatur, cupiditate corporis impedit neque facere ex
-					dolores asperiores? Sapiente id, cupiditate itaque natus dolores at,
-					repudiandae reprehenderit ducimus quasi amet consectetur enim autem
-					doloribus laborum sit ut facere vero ipsam eveniet.
-				</H2>
 				<Routes>
 					<Route path="/" element={<div>Home</div>} />
 					<Route path="/login" element={<Authorization />} />
 					<Route path="/register" element={<Register />} />
 					<Route path="/users" element={<Users />} />
-					<Route path="/post" element={<div>newpost</div>} />
-					<Route path="/post/:postId" element={<div>Home</div>} />
+					<Route path="/post/:id" element={<Post />} />
+					{/* <Route path="/post" element={<Post />} /> */}
 					<Route path="/404" element={<div>error</div>} />
-					<Route path="*" element={<div>error</div>} />
+					<Route path="*" element={<div>error*****</div>} />
 				</Routes>
 			</Page>
 			<Footer />

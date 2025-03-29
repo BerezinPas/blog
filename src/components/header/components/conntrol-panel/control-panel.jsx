@@ -25,6 +25,10 @@ const ControlPanelContainer = ({ className }) => {
 	const login = useSelector(selectUserLogin);
 	const session = useSelector(selectSession);
 
+	const onLogout = () => {
+		dispatch(logout(session));
+		sessionStorage.removeItem('userData');
+	};
 	return (
 		<div className={className}>
 			{roleId === ROLE.GUEST ? (
@@ -34,11 +38,7 @@ const ControlPanelContainer = ({ className }) => {
 			) : (
 				<Buttons>
 					<span>{login}</span>
-					<button
-						onClick={() => {
-							dispatch(logout(session));
-						}}
-					>
+					<button onClick={onLogout}>
 						<Icon size="28px" id="fa-sign-out" />
 					</button>
 				</Buttons>
@@ -47,7 +47,8 @@ const ControlPanelContainer = ({ className }) => {
 				<button onClick={() => navigate(-1)}>
 					<Icon size="25px" id="fa-backward" />
 				</button>
-				<Link to="./post">
+				<Link to="./post/0">
+					{/* TODO FIX LINK TO POST */}
 					<Icon size="38px" id="fa-file-text-o" />
 				</Link>
 				<Link to="./users">

@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
-const ContainerLayout = ({ className, children }) => (
-	<div className={className}>{children}</div>
-);
-
-export const Container = styled(ContainerLayout)`
+export const Container = styled.div`
 	width: 100%;
 	max-width: 1040px;
 	padding: 0 20px;

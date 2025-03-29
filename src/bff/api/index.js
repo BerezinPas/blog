@@ -4,3 +4,8 @@ export * from './get-users';
 export * from './get-roles';
 export * from './set-user-role';
 export * from './fetch-delete-user';
+export * from './create-comment';
+export * from './add-session';
+export * from './get-session';
+export * from './fetch-delete-session';
+export * from './get-user-by-id';
