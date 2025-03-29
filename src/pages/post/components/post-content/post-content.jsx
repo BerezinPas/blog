@@ -4,6 +4,8 @@ import { useServerRequest } from '../../../../hooks';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '../../../../selectors';
 import { ROLE } from '../../../../constants';
+import { SpecialPanel } from '../special-panel/special-panel';
+import { useNavigate } from 'react-router-dom';
 
 const PostContentContainer = ({
 	className,
@@ -11,27 +13,26 @@ const PostContentContainer = ({
 }) => {
 	const requestServer = useServerRequest();
 	const roleId = useSelector(selectUserRole);
+	const navigate = useNavigate();
 
 	return (
 		<div className={className}>
 			<H2>{title}</H2>
 			<img src={imageURL} alt={title} />
 			<div></div>
-			<div className="special-panel">
-				<div className="published-at">
-					<Icon id=" fa-calendar-o" margin="0 7px 0 0 " size="20px" />
 
-					{publishedAt}
-				</div>
-				<div className="btns">
-					{roleId === ROLE.ADMIN && (
-						<>
-							<Icon id=" fa-trash-o" margin="0 10px 0 0 " size="28px" />
-							<Icon id=" fa-pencil-square-o" size="28px" />
-						</>
-					)}
-				</div>
-			</div>
+			<SpecialPanel
+				publishedAt={publishedAt}
+				roleId={roleId}
+				editButton={
+					<Icon
+						id=" fa-pencil-square-o"
+						margin="0 10px 0 0 "
+						size="28px"
+						onClick={() => navigate(`/post/${id}/edit`)}
+					/>
+				}
+			/>
 			<div className="post-text">{content}</div>
 		</div>
 	);
@@ -50,12 +51,8 @@ export const PostContent = styled(PostContentContainer)`
 		margin: 0 0 20px;
 		max-width: 65%;
 	}
-	& .special-panel {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 20px;
-	}
+
 	& .post-text {
+		white-space: pre-line;
 	}
 `;

@@ -9,3 +9,4 @@ export * from './remove-comment';
 export * from './remove-comment-async';
 export * from './close-modal';
 export * from './open-modal';
+export * from './save-post-async';

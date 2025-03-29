@@ -10,3 +10,4 @@ export * from './get-session';
 export * from './fetch-delete-session';
 export * from './get-user-by-id';
 export * from './fetch-delete-comment';
+export * from './set-post';
