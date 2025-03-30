@@ -48,9 +48,9 @@ function Blog() {
 					<Route path="/login" element={<Authorization />} />
 					<Route path="/register" element={<Register />} />
 					<Route path="/users" element={<Users />} />
+					<Route path="/post" element={<Post />} />
 					<Route path="/post/:id" element={<Post />} />
 					<Route path="/post/:id/edit" element={<Post />} />
-					{/* <Route path="/post" element={<Post />} /> */}
 					<Route path="/404" element={<div>error</div>} />
 					<Route path="*" element={<div>error*****</div>} />
 				</Routes>

@@ -1,8 +1,8 @@
 import { ROLE } from '../../constants';
-import { setPost } from '../api';
+import { createPost, setPost } from '../api';
 import { sessions } from '../sessions';
 
-export const updatePost = async (hash, postData) => {
+export const savePost = async (hash, postData) => {
 	const accessRoles = [ROLE.ADMIN];
 
 	const access = await sessions.access(hash, accessRoles);
@@ -14,7 +14,8 @@ export const updatePost = async (hash, postData) => {
 		};
 	}
 
-	const post = await setPost(postData);
+	const post =
+		postData.id === null ? await createPost(postData) : await setPost(postData);
 
 	console.log('updatePostupdatePost', post);
 	return {

@@ -8,5 +8,5 @@ export * from './delete-user';
 export * from './fetch-post';
 export * from './send-comment';
 export * from './delete-comment';
-export * from './updatePost';
+export * from './savePost';
 export * from './delete-post';

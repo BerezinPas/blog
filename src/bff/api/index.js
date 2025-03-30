@@ -12,3 +12,4 @@ export * from './get-user-by-id';
 export * from './fetch-delete-comment';
 export * from './set-post';
 export * from './fetch-delete-post';
+export * from './create-post';

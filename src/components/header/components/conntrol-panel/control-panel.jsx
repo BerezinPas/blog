@@ -47,8 +47,7 @@ const ControlPanelContainer = ({ className }) => {
 				<button onClick={() => navigate(-1)}>
 					<Icon size="25px" id="fa-backward" />
 				</button>
-				<Link to="./post/0">
-					{/* TODO FIX LINK TO POST */}
+				<Link to="./post">
 					<Icon size="38px" id="fa-file-text-o" />
 				</Link>
 				<Link to="./users">

@@ -11,4 +11,5 @@ export const Input = styled(InputContainer)`
 	font-size: 18px;
 	border-radius: 5px;
 	width: ${({ width = '100%' }) => width};
+	box-shadow: 1px 1px 3px #000;
 `;

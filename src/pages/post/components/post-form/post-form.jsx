@@ -34,8 +34,8 @@ const PostFormContainer = ({
 				title: newTitle,
 				content: newContent,
 			}),
-		).then(() => {
-			navigate(`/post/${id}`);
+		).then(({ payload }) => {
+			navigate(`/post/${payload.id}`);
 		});
 
 		// console.log(newImage, newTitle, newContent);
@@ -51,7 +51,7 @@ const PostFormContainer = ({
 				editButton={
 					<Icon
 						id=" fa-floppy-o"
-						margin="0 10px 0 0 "
+						margin="0 0px 0 0 "
 						size="28px"
 						onClick={onSave}
 					/>
@@ -72,6 +72,9 @@ const PostFormContainer = ({
 
 export const PostForm = styled(PostFormContainer)`
 	margin-top: 50px;
+	display: flex;
+	gap: 20px;
+	flex-direction: column;
 	& img {
 		float: left;
 		margin: 0 10px 10px 0;
@@ -86,5 +89,10 @@ export const PostForm = styled(PostFormContainer)`
 
 	& .post-text {
 		white-space: pre-line;
+		min-height: 100px;
+		background-color: #fff;
+		border-radius: 10px;
+		padding: 10px;
+		box-shadow: 1px 1px 3px #000;
 	}
 `;
