@@ -1,9 +1,9 @@
 import { getComments, getPosts } from '../api';
 import { createCommentsMap } from '../utils/create-comments-map';
 
-export const fetchPosts = async (page, limit) => {
+export const fetchPosts = async (searchValue, page, limit) => {
 	const [{ posts, links }, comments] = await Promise.all([
-		getPosts(page, limit),
+		getPosts(searchValue, page, limit),
 		getComments(),
 	]);
 	const commentsMap = createCommentsMap(comments);
