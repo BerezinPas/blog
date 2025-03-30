@@ -7,6 +7,8 @@ export const ROLE = {
 	GUEST: 3,
 };
 
+export const PAGINATION_LIMIT = 9;
+
 [
 	{ id: 0, role: 'admin' },
 	{ id: 1, role: 'moderator' },
