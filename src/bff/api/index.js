@@ -13,3 +13,5 @@ export * from './fetch-delete-comment';
 export * from './set-post';
 export * from './fetch-delete-post';
 export * from './create-post';
+export * from './get-comments';
+export * from './get-posts';
