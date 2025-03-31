@@ -1,17 +1,15 @@
-import styled from 'styled-components';
-import { H2 } from '../h2/h2';
+import { useSelector } from 'react-redux';
+import { checkAccess } from '../../utils/check-access';
+import { Error } from '../error/error';
+import { selectUserRole } from '../../selectors';
 
-const Div = styled.div`
-	text-align: center;
-`;
+export const Content = ({ errorMessage, children, access }) => {
+	const userRole = useSelector(selectUserRole);
+	let acccessError;
+	if (access) {
+		acccessError = checkAccess(access, userRole) ? null : 'Доступ запрещен';
+	}
 
-export const Content = ({ errorMessage, children }) => {
-	return errorMessage ? (
-		<>
-			<H2>Ошибка</H2>
-			<Div>{errorMessage}</Div>
-		</>
-	) : (
-		<>{children}</>
-	);
+	const error = errorMessage || acccessError;
+	return error ? <Error errorMessage={error} /> : <> {children}</>;
 };

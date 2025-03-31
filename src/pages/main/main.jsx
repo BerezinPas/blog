@@ -34,7 +34,7 @@ const MainContainer = ({ className }) => {
 		startDelayedSearch(!shouldSearch);
 	};
 	return (
-		<Container height="100%">
+		<Container>
 			<div className={className}>
 				<Search value={searchValue} onChange={onSearch} />
 				<div className="posts">

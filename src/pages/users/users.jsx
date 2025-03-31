@@ -4,15 +4,22 @@ import { TableRow, UserRow } from './components';
 import { useServerRequest } from '../../hooks';
 import { useEffect, useState } from 'react';
 import { ROLE } from '../../constants';
+import { useSelector } from 'react-redux';
+import { selectUserRole } from '../../selectors';
+import { checkAccess } from '../../utils/check-access';
 
 export const UsersContainer = ({ className }) => {
 	const serverRequest = useServerRequest();
+	const roleId = useSelector(selectUserRole);
 	const [users, setUsers] = useState([]);
 	const [roles, setRoles] = useState([]);
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [shouldUpdateUserList, setShouldUpdateUserList] = useState(false);
 
 	useEffect(() => {
+		if (!checkAccess([ROLE.ADMIN], roleId)) {
+			return;
+		}
 		Promise.all([
 			serverRequest('fetchUsers'),
 			serverRequest('fetchRoles'),
@@ -30,14 +37,17 @@ export const UsersContainer = ({ className }) => {
 	}, [serverRequest, shouldUpdateUserList]);
 
 	const onUserDelete = (userId) => {
+		if (!checkAccess([ROLE.ADMIN], roleId)) {
+			return;
+		}
 		serverRequest('deleteUser', userId).then(() =>
 			setShouldUpdateUserList(!shouldUpdateUserList),
 		);
 	};
 	return (
-		<div className={className}>
-			<Container>
-				<Content errorMessage={errorMessage}>
+		<Container>
+			<div className={className}>
+				<Content errorMessage={errorMessage} access={[ROLE.ADMIN]}>
 					<H2>Пользователи</H2>
 					<TableRow>
 						<div>Логин</div>
@@ -56,8 +66,8 @@ export const UsersContainer = ({ className }) => {
 						/>
 					))}
 				</Content>
-			</Container>
-		</div>
+			</div>
+		</Container>
 	);
 };
 

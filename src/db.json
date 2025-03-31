@@ -13,6 +13,13 @@
       "registred_at": "2025-03-26 07:52",
       "role_id": 1,
       "id": 31
+    },
+    {
+      "login": "qwe",
+      "password": "qweqwe",
+      "registred_at": "2025-03-31 04:58",
+      "role_id": 1,
+      "id": 32
     }
   ],
   "roles": [
@@ -179,26 +186,15 @@
   ],
   "sessions": [
     {
-      "hash": "0.58110085320211246617816414072876796126365661621094",
+      "hash": "0.13224695262978336529613443417474627494812011718750",
       "user": {
-        "id": 2,
-        "login": "admin",
+        "id": 32,
+        "login": "qwe",
         "password": "qweqwe",
-        "registred_at": "2025-03-26 07:51",
-        "role_id": 0
+        "registred_at": "2025-03-31 04:58",
+        "role_id": 1
       },
-      "id": 2
-    },
-    {
-      "hash": "0.47438136801476171733327191759599372744560241699219",
-      "user": {
-        "id": 2,
-        "login": "admin",
-        "password": "qweqwe",
-        "registred_at": "2025-03-26 07:51",
-        "role_id": 0
-      },
-      "id": 3
+      "id": 1
     }
   ]
 }

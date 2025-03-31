@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import { Footer, Header, Modal } from './components';
+import { Error, Footer, Header, Modal } from './components';
 import { Authorization, Main, Post, Register, Users } from './pages';
 import { useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -14,12 +14,13 @@ const Appcolumn = styled.div`
 	background-color: #ebebeb;
 	min-height: 100%;
 	margin: 0 auto;
-	height: 100%;
 `;
 
 const Page = styled.div`
 	padding: 120px 0 50px;
-	height: 100%;
+	/* height: 100%; */
+	flex-grow: 1;
+	display: flex;
 `;
 
 function Blog() {
@@ -54,7 +55,10 @@ function Blog() {
 					<Route path="/post/:id" element={<Post />} />
 					<Route path="/post/:id/edit" element={<Post />} />
 					<Route path="/404" element={<div>error</div>} />
-					<Route path="*" element={<div>error*****</div>} />
+					<Route
+						path="*"
+						element={<Error errorMessage="Такая страница не существует" />}
+					/>
 				</Routes>
 			</Page>
 			<Footer />

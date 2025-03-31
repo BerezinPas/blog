@@ -22,7 +22,9 @@ export const sessions = {
 
 	async access(hash, accessRoles) {
 		const session = await getSession(hash);
+		console.log('hash,hash', hash);
+		console.log('sessionsession', session);
 
-		return !!session.user && accessRoles.includes(session.user.roleId);
+		return !!session?.user && accessRoles.includes(session.user.roleId);
 	},
 };

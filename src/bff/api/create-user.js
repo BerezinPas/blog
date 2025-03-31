@@ -9,7 +9,7 @@ export const createUser = (login, password) => {
 		body: JSON.stringify({
 			login,
 			password,
-			registed_at: new Date().toISOString().substring(0, 16).replace('T', ' '),
+			registred_at: new Date().toISOString().substring(0, 16).replace('T', ' '),
 			role_id: ROLE.READER,
 		}),
 	}).then((user) => user.json());

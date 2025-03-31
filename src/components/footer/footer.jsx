@@ -29,7 +29,7 @@ const FooterContainer = ({ className }) => {
 	}, []);
 
 	return (
-		<div className={className}>
+		<footer className={className}>
 			<Container>
 				<FooterWrapper>
 					<div>
@@ -44,7 +44,7 @@ const FooterContainer = ({ className }) => {
 					</div>
 				</FooterWrapper>
 			</Container>
-		</div>
+		</footer>
 	);
 };
 
