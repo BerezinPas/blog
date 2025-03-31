@@ -10,6 +10,7 @@ import {
 	openModal,
 	removeCommentAsync,
 } from '../../../../../../actions';
+import { checkAccess } from '../../../../../../utils/check-access';
 
 const CommentContainer = ({ className, id, author, content, publishedAt }) => {
 	const roleId = useSelector(selectUserRole);
@@ -45,7 +46,7 @@ const CommentContainer = ({ className, id, author, content, publishedAt }) => {
 				<div className="text">{content}</div>
 			</div>
 			<div className="delete-btn-wrapper">
-				{[ROLE.ADMIN, ROLE.MODERATOR].includes(roleId) && (
+				{checkAccess([ROLE.ADMIN, ROLE.MODERATOR], roleId) && (
 					<Icon
 						id="fa-trash-o"
 						margin="8px 0px 0 7px "

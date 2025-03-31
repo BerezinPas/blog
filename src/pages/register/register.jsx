@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { AuthErrorForm, Button, H2, Input } from '../../components';
+import { AuthErrorForm, Button, Container, H2, Input } from '../../components';
 import * as yup from 'yup';
 import { server } from '../../bff';
 import { setUser } from '../../actions';
@@ -60,37 +60,39 @@ const RegisterContainer = ({ className }) => {
 	const errorMessage = formError || serverError;
 
 	return (
-		<div className={className}>
-			<H2>Авторизация</H2>
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<Input
-					type="text"
-					placeholder="login"
-					{...register('login', {
-						onChange: () => setServerError(null),
-					})}
-				/>
-				<Input
-					type="password"
-					placeholder="password"
-					{...register('password', {
-						onChange: () => setServerError(null),
-					})}
-				/>
-				<Input
-					type="password"
-					placeholder="repeat password"
-					{...register('passwordCheck', {
-						onChange: () => setServerError(null),
-					})}
-				/>
-				<Button type="submit" disabled={!!formError}>
-					Зарегистрироваться
-				</Button>
-				{errorMessage && <AuthErrorForm>{errorMessage}</AuthErrorForm>}
-				<Link to="/login">Авторизация</Link>
-			</form>
-		</div>
+		<Container>
+			<div className={className}>
+				<H2>Регистрация</H2>
+				<form onSubmit={handleSubmit(onSubmit)}>
+					<Input
+						type="text"
+						placeholder="login"
+						{...register('login', {
+							onChange: () => setServerError(null),
+						})}
+					/>
+					<Input
+						type="password"
+						placeholder="password"
+						{...register('password', {
+							onChange: () => setServerError(null),
+						})}
+					/>
+					<Input
+						type="password"
+						placeholder="repeat password"
+						{...register('passwordCheck', {
+							onChange: () => setServerError(null),
+						})}
+					/>
+					<Button type="submit" disabled={!!formError}>
+						Зарегистрироваться
+					</Button>
+					{errorMessage && <AuthErrorForm>{errorMessage}</AuthErrorForm>}
+					<Link to="/login">ссылка на авторизацию</Link>
+				</form>
+			</div>
+		</Container>
 	);
 };
 

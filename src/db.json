@@ -20,6 +20,13 @@
       "registred_at": "2025-03-31 04:58",
       "role_id": 1,
       "id": 32
+    },
+    {
+      "login": "qweq",
+      "password": "qweqwe",
+      "registred_at": "2025-03-31 08:03",
+      "role_id": 2,
+      "id": 33
     }
   ],
   "roles": [
@@ -123,13 +130,6 @@
     {
       "author_id": 2,
       "post_id": 0,
-      "content": "d2 d2 d2",
-      "published_at": "2025-03-28 10:11",
-      "id": 7
-    },
-    {
-      "author_id": 2,
-      "post_id": 0,
       "content": "d2 d2",
       "published_at": "2025-03-29 02:36",
       "id": 8
@@ -182,17 +182,24 @@
       "content": "qwe wqeeqw e",
       "published_at": "2025-03-30 06:37",
       "id": 17
+    },
+    {
+      "author_id": 2,
+      "post_id": "0",
+      "content": "ssss2",
+      "published_at": "2025-03-31 08:19",
+      "id": 18
     }
   ],
   "sessions": [
     {
-      "hash": "0.13224695262978336529613443417474627494812011718750",
+      "hash": "0.86476570503451255511606632353505119681358337402344",
       "user": {
-        "id": 32,
-        "login": "qwe",
+        "id": 2,
+        "login": "admin",
         "password": "qweqwe",
-        "registred_at": "2025-03-31 04:58",
-        "role_id": 1
+        "registred_at": "2025-03-26 07:51",
+        "role_id": 0
       },
       "id": 1
     }

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useServerRequest } from '../../../../hooks';
 import { sendCommentAsync } from '../../../../actions';
 import { useParams } from 'react-router-dom';
-import { selectUserId } from '../../../../selectors';
+import { selectUserId, selectWasLogout } from '../../../../selectors';
 
 const CommentsContainer = ({ className, comments }) => {
 	const [newComment, setNewCommet] = useState('');
@@ -14,6 +14,7 @@ const CommentsContainer = ({ className, comments }) => {
 	const requestServer = useServerRequest();
 	const userId = useSelector(selectUserId);
 	const params = useParams();
+	const isAuthorized = !useSelector(selectWasLogout);
 	const onSubmit = (e) => {
 		// console.log('e.target.value', newComment);
 		e.preventDefault();
@@ -34,17 +35,20 @@ const CommentsContainer = ({ className, comments }) => {
 
 	return (
 		<div className={className}>
-			<form className="new-comment" onSubmit={onSubmit}>
-				<textarea
-					name="newComment"
-					placeholder="Комментрарий"
-					value={newComment}
-					onChange={({ target }) => setNewCommet(target.value)}
-				></textarea>
-				<button type="submit">
-					<Icon id="fa-paper-plane-o" margin="0 0 0 7px" />
-				</button>
-			</form>
+			{isAuthorized && (
+				<form className="new-comment" onSubmit={onSubmit}>
+					<textarea
+						name="newComment"
+						placeholder="Комментрарий"
+						value={newComment}
+						onChange={({ target }) => setNewCommet(target.value)}
+					></textarea>
+					<button type="submit">
+						<Icon id="fa-paper-plane-o" margin="0 0 0 7px" />
+					</button>
+				</form>
+			)}
+
 			<div className="comments">
 				{comments.map(({ id, author, content, publishedAt }) => (
 					<Comment

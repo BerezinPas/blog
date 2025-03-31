@@ -6,6 +6,7 @@ import { selectPostId } from '../../../../selectors';
 import { CLOSE_MODAL, openModal, removePostAsync } from '../../../../actions';
 import { useServerRequest } from '../../../../hooks/use-server-request';
 import { useNavigate } from 'react-router-dom';
+import { checkAccess } from '../../../../utils/check-access';
 
 export const SpecialPanelContainer = ({
 	className,
@@ -17,6 +18,8 @@ export const SpecialPanelContainer = ({
 	const dispatch = useDispatch();
 	const requestServer = useServerRequest();
 	const navigate = useNavigate();
+
+	const isAdmin = checkAccess([ROLE.ADMIN], roleId);
 
 	const onPostRemove = (id) => {
 		dispatch(
@@ -44,7 +47,7 @@ export const SpecialPanelContainer = ({
 				)}
 			</div>
 			<div className="btns">
-				{roleId === ROLE.ADMIN && (
+				{isAdmin && (
 					<>
 						{editButton}
 						{publishedAt && (

@@ -1,7 +1,6 @@
 import { ROLE } from '../../constants';
-import { createComment, getUserById, getUsers } from '../api';
+import { createComment, getUserById } from '../api';
 import { sessions } from '../sessions';
-import { transformComment } from '../transformers';
 
 export const sendComment = async (hash, userId, postId, content, data) => {
 	const accessRoles = [ROLE.ADMIN, ROLE.MODERATOR, ROLE.READER];
@@ -15,9 +14,7 @@ export const sendComment = async (hash, userId, postId, content, data) => {
 		};
 	}
 
-	const comment = transformComment(
-		await createComment(userId, postId, content, data),
-	);
+	const comment = await createComment(userId, postId, content, data);
 
 	const user = await getUserById(userId);
 

@@ -1,4 +1,5 @@
 import { URL } from '../../constants';
+import { transformComment } from '../transformers';
 
 const fetchURL = `${URL}/comments`;
 
@@ -12,5 +13,7 @@ export const createComment = (authorId, postId, content, publishedAt) => {
 			content,
 			published_at: new Date().toISOString().substring(0, 16).replace('T', ' '),
 		}),
-	}).then((comment) => comment.json());
+	})
+		.then((comment) => comment.json())
+		.then((comment) => comment && transformComment(comment));
 };

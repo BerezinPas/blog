@@ -55,5 +55,6 @@ export const PostContent = styled(PostContentContainer)`
 
 	& .post-text {
 		white-space: pre-line;
+		margin-bottom: 40px;
 	}
 `;

@@ -8,3 +8,4 @@ export * from './select-modal-on-confirm';
 export * from './select-modal-text';
 export * from './select-modal-is-opne';
 export * from './select-post-id';
+export * from './select-was-logout';

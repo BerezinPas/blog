@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { server } from '../../bff';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { AuthErrorForm, Button, H2, Input } from '../../components';
+import { AuthErrorForm, Button, Container, H2, Input } from '../../components';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../actions';
@@ -51,30 +51,32 @@ const AuthorizationContainer = ({ className }) => {
 	const errorMessage = formError || serverError;
 
 	return (
-		<div className={className}>
-			<H2>Авторизация</H2>
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<Input
-					type="text"
-					placeholder="login"
-					{...register('login', {
-						onChange: () => setServerError(null),
-					})}
-				/>
-				<Input
-					type="password"
-					placeholder="password"
-					{...register('password', {
-						onChange: () => setServerError(null),
-					})}
-				/>
-				<Button type="submit" disabled={!!formError}>
-					Авторизоваться
-				</Button>
-				{errorMessage && <AuthErrorForm>{errorMessage}</AuthErrorForm>}
-				<Link to="/register">Регистрация</Link>
-			</form>
-		</div>
+		<Container>
+			<div className={className}>
+				<H2>Авторизация</H2>
+				<form onSubmit={handleSubmit(onSubmit)}>
+					<Input
+						type="text"
+						placeholder="login"
+						{...register('login', {
+							onChange: () => setServerError(null),
+						})}
+					/>
+					<Input
+						type="password"
+						placeholder="password"
+						{...register('password', {
+							onChange: () => setServerError(null),
+						})}
+					/>
+					<Button type="submit" disabled={!!formError}>
+						Авторизоваться
+					</Button>
+					{errorMessage && <AuthErrorForm>{errorMessage}</AuthErrorForm>}
+					<Link to="/register">Регистрация</Link>
+				</form>
+			</div>
+		</Container>
 	);
 };
 
