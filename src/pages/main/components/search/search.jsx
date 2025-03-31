@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Icon, Input } from '../../../../components';
+import PropTypes from 'prop-types';
 
 const SearchContainer = ({ className, onChange, value }) => {
 	return (
@@ -21,3 +22,8 @@ export const Search = styled(SearchContainer)`
 		transform: translateY(-50%);
 	}
 `;
+
+Search.propTypes = {
+	onChange: PropTypes.func.isRequired,
+	value: PropTypes.string,
+};

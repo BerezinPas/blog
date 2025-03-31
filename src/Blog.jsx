@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import { Error, Footer, Header, Modal } from './components';
+import { Container, Error, Footer, Header, Modal } from './components';
 import { Authorization, Main, Post, Register, Users } from './pages';
 import { useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -54,10 +54,13 @@ function Blog() {
 					<Route path="/post" element={<Post />} />
 					<Route path="/post/:id" element={<Post />} />
 					<Route path="/post/:id/edit" element={<Post />} />
-					<Route path="/404" element={<div>error</div>} />
 					<Route
 						path="*"
-						element={<Error errorMessage="Такая страница не существует" />}
+						element={
+							<Container>
+								<Error errorMessage="Такая страница не существует" />
+							</Container>
+						}
 					/>
 				</Routes>
 			</Page>

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const URL = 'http://localhost:3003';
 
 export const ROLE = {
@@ -9,9 +11,19 @@ export const ROLE = {
 
 export const PAGINATION_LIMIT = 9;
 
-[
-	{ id: 0, role: 'admin' },
-	{ id: 1, role: 'moderator' },
-	{ id: 2, role: 'reader' },
-	{ id: 3, role: 'guest' },
-];
+export const PROP_TYPE = {
+	ROLE: PropTypes.oneOf(Object.values(ROLE)),
+	POST: PropTypes.shape({
+		id: PropTypes.number,
+		title: PropTypes.string,
+		imageURL: PropTypes.string,
+		content: PropTypes.string,
+		publishedAt: PropTypes.string,
+	}),
+	COMMENT: PropTypes.shape({
+		id: PropTypes.number,
+		author: PropTypes.string,
+		content: PropTypes.string,
+		publishedAt: PropTypes.string,
+	}),
+};

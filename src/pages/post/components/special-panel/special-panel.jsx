@@ -7,6 +7,7 @@ import { CLOSE_MODAL, openModal, removePostAsync } from '../../../../actions';
 import { useServerRequest } from '../../../../hooks/use-server-request';
 import { useNavigate } from 'react-router-dom';
 import { checkAccess } from '../../../../utils/check-access';
+import PropTypes from 'prop-types';
 
 export const SpecialPanelContainer = ({
 	className,
@@ -73,3 +74,9 @@ export const SpecialPanel = styled(SpecialPanelContainer)`
 	align-items: center;
 	margin: ${({ margin = '0 0 20px 0' }) => margin};
 `;
+
+SpecialPanel.propTypes = {
+	publishedAt: PropTypes.string,
+	roleId: PropTypes.string,
+	editButton: PropTypes.node,
+};

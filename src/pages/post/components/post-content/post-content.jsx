@@ -3,13 +3,14 @@ import { H2, Icon } from '../../../../components';
 import { useServerRequest } from '../../../../hooks';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '../../../../selectors';
-import { ROLE } from '../../../../constants';
+import { PROP_TYPE, ROLE } from '../../../../constants';
 import { SpecialPanel } from '../special-panel/special-panel';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const PostContentContainer = ({
 	className,
-	post: { id, title, imageURL, content, publishedAt, comments },
+	post: { id, title, imageURL, content, publishedAt },
 }) => {
 	const requestServer = useServerRequest();
 	const roleId = useSelector(selectUserRole);
@@ -58,3 +59,7 @@ export const PostContent = styled(PostContentContainer)`
 		margin-bottom: 40px;
 	}
 `;
+
+PostContent.propTypes = {
+	post: PROP_TYPE.POST,
+};

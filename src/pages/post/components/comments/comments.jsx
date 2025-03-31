@@ -7,6 +7,8 @@ import { useServerRequest } from '../../../../hooks';
 import { sendCommentAsync } from '../../../../actions';
 import { useParams } from 'react-router-dom';
 import { selectUserId, selectWasLogout } from '../../../../selectors';
+import PropTypes from 'prop-types';
+import { PROP_TYPE } from '../../../../constants';
 
 const CommentsContainer = ({ className, comments }) => {
 	const [newComment, setNewCommet] = useState('');
@@ -31,7 +33,7 @@ const CommentsContainer = ({ className, comments }) => {
 		});
 	};
 
-	console.log('comments', comments);
+	// console.log('comments', comments);
 
 	return (
 		<div className={className}>
@@ -95,3 +97,7 @@ export const Comments = styled(CommentsContainer)`
 		border-radius: 10px;
 	}
 `;
+
+Comments.propTypes = {
+	comments: PropTypes.arrayOf(PROP_TYPE.COMMENT),
+};

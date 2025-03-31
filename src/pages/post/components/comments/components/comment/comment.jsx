@@ -11,6 +11,7 @@ import {
 	removeCommentAsync,
 } from '../../../../../../actions';
 import { checkAccess } from '../../../../../../utils/check-access';
+import PropTypes from 'prop-types';
 
 const CommentContainer = ({ className, id, author, content, publishedAt }) => {
 	const roleId = useSelector(selectUserRole);
@@ -77,3 +78,10 @@ export const Comment = styled(CommentContainer)`
 		width: 23px;
 	}
 `;
+
+Comment.propTypes = {
+	id: PropTypes.number,
+	author: PropTypes.string,
+	content: PropTypes.string,
+	publishedAt: PropTypes.string,
+};

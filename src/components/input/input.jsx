@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import PropTypes from 'prop-types';
 const InputContainer = ({ className, width, ...props }) => (
 	<input className={className} {...props} />
 );
@@ -13,3 +13,7 @@ export const Input = styled(InputContainer)`
 	width: ${({ width = '100%' }) => width};
 	box-shadow: 1px 1px 3px #000;
 `;
+
+Input.propTypes = {
+	width: PropTypes.string,
+};

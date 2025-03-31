@@ -3,6 +3,8 @@ import { TableRow } from '../table-row/table-row';
 import { Icon } from '../../../../components';
 import { useState } from 'react';
 import { useServerRequest } from '../../../../hooks';
+import PropTypes from 'prop-types';
+import { PROP_TYPE } from '../../../../constants';
 
 const UserRowContainer = ({
 	className,
@@ -72,3 +74,12 @@ export const UserRow = styled(UserRowContainer)`
 		margin: 0 0 0 15px;
 	}
 `;
+
+UserRow.propTypes = {
+	id: PropTypes.number,
+	registredAt: PropTypes.string,
+	roleId: PROP_TYPE.ROLE,
+	login: PropTypes.string,
+	roles: PropTypes.arrayOf(PROP_TYPE.ROLE),
+	onUserDelete: PropTypes.func,
+};

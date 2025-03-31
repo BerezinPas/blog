@@ -1,14 +1,15 @@
 import styled from 'styled-components';
-import { H2, Icon, Input } from '../../../../components';
+import { Icon, Input } from '../../../../components';
 import { useServerRequest } from '../../../../hooks';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserRole } from '../../../../selectors';
-import { ROLE } from '../../../../constants';
 import { SpecialPanel } from '../special-panel/special-panel';
 import { useRef } from 'react';
 import { sanitazeContent } from './utils';
 import { savePostAsync } from '../../../../actions';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { PROP_TYPE } from '../../../../constants';
 
 const PostFormContainer = ({
 	className,
@@ -96,3 +97,7 @@ export const PostForm = styled(PostFormContainer)`
 		box-shadow: 1px 1px 3px #000;
 	}
 `;
+
+PostForm.propTypes = {
+	post: PROP_TYPE.POST,
+};

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Icon } from '../../../../components';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const PostCardContainer = ({
 	className,
@@ -47,3 +48,11 @@ export const PostCard = styled(PostCardContainer)`
 		color: rgba(122, 122, 122, 1);
 	}
 `;
+
+PostCard.propTypes = {
+	id: PropTypes.number,
+	imageURL: PropTypes.string,
+	title: PropTypes.string,
+	publishedAt: PropTypes.string,
+	commentsCount: PropTypes.number,
+};
