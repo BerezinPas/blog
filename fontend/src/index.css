@@ -1,0 +1,13 @@
+/* Reset and base styles  */
+@import url('./fonts/font-awesome.css');
+@import url('./reset.css');
+
+body {
+	background-color: #fff;
+}
+
+html,
+body,
+#root {
+	height: 100%;
+}
